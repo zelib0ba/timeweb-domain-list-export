@@ -72,8 +72,6 @@ for z, i in enumerate(head):
             ws.write(z+1, 2, autorenowal,autorenowal_none)
         else:
             ws.write(z+1, 2, autorenowal)
-
-
     else:
         ws.write(z+1, 0, domain)
         ws.write(z+1, 3, f'{" ".join(date)}')
