@@ -29,19 +29,22 @@ for z, i in enumerate(head):
     # print (z, i)
     domain_name = i.find ('a', class_ = 'cpS-lk-simple-one-line js-fqdn')['data-puny']
     pending_date = i.find ('p', class_ = 'cpS-tx-add-accent js-domain-info')
-    print (punycode.convert(domain_name))
-    # print (pending_date.text.split(' '))
-    # date  = pending_date.text.split(' ')
-    # print (date[5])
-    # if date[4] == 'Оплачен':
-        # day = date[6]
-        # month = date[7]
-        # year = date[8]
-        # if len(str(month_converter(month))) == 1:
-            # month = f'0{month_converter(month)}'
-        # else:
-            # month = month_converter(month)
-        # print (f'{punycode.convert(domain_name)} - {day}.{month}.{year[0:4]}')
+    # print (punycode.convert(domain_name))
+    date =  pending_date.text.replace('\n','').split(' ')[4:]
+    # print (date)
+    if date[0] == 'Оплачен':
+        day = date[2]
+        month = date[3]
+        year = date[4]
+        if date[-2] == 'нет':
+            autorenowal = date[-3].replace('\xa0-','')
+        else:
+            autorenowal = date[-2].replace('\xa0-','')
+        if len(str(month_converter(month))) == 1:
+            month = f'0{month_converter(month)}'
+        else:
+            month = month_converter(month)
+        print (f'{punycode.convert(domain_name)} - {day}.{month}.{year[0:4]} автоплатеж - {autorenowal}')
     # else:
         # print (f'{punycode.convert(domain_name)} {date[-3:]}')
 
