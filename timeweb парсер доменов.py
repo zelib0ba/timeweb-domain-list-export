@@ -37,9 +37,9 @@ for z, i in enumerate(head):
         month = date[3]
         year = date[4]
         if date[-2] == 'нет':
-            autorenowal = date[-3].replace('\xa0-','')
+            autorenowal = date[-3].replace('\xa0—','')
         else:
-            autorenowal = date[-2].replace('\xa0-','')
+            autorenowal = date[-2].replace('\xa0—','')
         if len(str(month_converter(month))) == 1:
             month = f'0{month_converter(month)}'
         else:
